@@ -1,0 +1,5 @@
+viktorija_vika_budget:
+    resource: "@ViktorijaVikaBudgetBundle/Resources/config/routing.yml"
+    prefix:   /
+
+
