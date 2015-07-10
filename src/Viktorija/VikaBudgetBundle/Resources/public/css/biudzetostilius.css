@@ -1,0 +1,98 @@
+#kuku {
+    color: rgb(255, 0, 0);
+    font-size: 15px;
+}
+#zuvis {
+    width: 100%;
+    height: 120px;
+    /*position: absolute;
+    /*left: 200px;
+    top: 200px;*/
+}
+body {
+    background-image: url('../images/background.jpg');
+}
+/*meniu nustatymai............................................................*/
+#isaved, #ianalysed, #ireceived, #ispent {
+    width: 100%;
+    height: 80px;
+    text-align: left;
+    background-size: 100%; 
+    background-color: white;
+    display: block;
+    background-repeat: no-repeat;
+    border-style: solid;
+    border: 2px outset grey;
+    margin: 3px;
+}
+#ireceived {
+    background-image: url("../images/meniu_images/received.gif");
+}
+#ispent {
+    background-image: url('../images/meniu_images/savings.jpg');
+}
+#isaved {
+    background-image: url("../images/meniu_images/savings.jpg");
+}
+#ianalysed {
+    background-image: url("../images/meniu_images/statistics.jpg");
+}
+a {
+    font-family: cursive;
+    font-weight: bold;
+    text-decoration-color: rgb(200, 200, 50);
+}
+/*meniu nustatymų pabaiga...................................................*/
+/*išlaidų grupių ir paveiksliukų nustatymai.................................................*/
+.inputbuttonimage {
+    width: 100%;
+    height: 120px;
+    /*background-size: 100%;*/
+    border: 5px solid pink;
+    position: relative;
+}
+.expenseimage {
+    width: 50%;
+    height: 110px;
+    float: right;
+}
+
+/*išlaidų grupių ir paveiksliukų nustatymų pabaiga..........................................*/
+/*formų ir mygtukų nustatymai...............................................*/
+.enterprice {
+    float:left;
+    width: 50%;
+}
+.inputform, #inputform {
+    width: 100%;
+    height: 50px; 
+    background-color: pink;
+    
+}
+.addButton, #addButton {
+    width: 100%;
+    height: 60px;
+    background-color: orange;
+}
+.expenseType {
+    font-weight: bolder;
+    font-size:  13px;
+    font-family: cursive; 
+    white-space: nowrap;
+}
+.plius {
+    font-size: 30px;  
+    font-weight: bolder;
+}
+/*formų ir mygtukų nustatymų pabaiga........................................*/
+/* apskaičiuotų sumų atvaizdavimas..........................................*/
+.weekOutput, .monthOutput, #weekOutput {
+    width: 75px;
+    height: 20px;
+    background-color: transparent;
+    border: 2px solid pink;
+    float: right; 
+    color: black;
+}
+/*apskaičiuotų sumų atvaizdavimo pabaiga....................................*/
+

@@ -1,0 +1,6 @@
+services:
+#    acme_demo.example:
+#        class: not used\DemoBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
+
+

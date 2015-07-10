@@ -1,0 +1,74 @@
+security:
+    encoders:
+        Viktorija\VikaBudgetBundle\Entity\BudgetUser:
+            algorithm: bcrypt
+        Symfony\Component\Security\Core\User\User:
+            algorithm: bcrypt
+            cost: 12
+
+#When you type in your username, Symfony needs to load that user's
+#information from somewhere. This is called a "user provider", and
+#you're in charge of configuring it. Symfony has a built-in way to load users
+#from the database, or you can create your own user provider.
+#The easiest (but most limited) way, is to configure Symfony to load
+#hardcoded users directly from the security.yml file itself. This
+#is called an "in memory" provider, but it's better to think of it as an "in
+#configuration" provider:
+    providers:
+#    kaip buvo pdf, adminui
+        in_memory:
+            memory:
+                users:
+                    admin:
+#                    encoded password is "kitten"
+                        password: $2a$12$7FFsG.q5cmT.55TYtYwT2OrZRdZvjiYoDg8RbPRRiAQyh329A7CAC
+                        roles: 'ROLE_ADMIN'
+
+#        useriams
+        our_db_provider:
+            entity:
+                class: ViktorijaVikaBudgetBundle:BudgetUser
+# paskutiniam veiksme jį prašo nuimti:
+#               property: username
+
+
+    firewalls:
+
+#    The dev firewall isn't important, it just
+#     makes sure that Symfony's development tools -
+#     which live under URLs like /_profiler and /_wdt aren't
+#     blocked by your security.
+        dev:
+            pattern: ^/(_(profiler|wdt|error)|css|images|js)/
+            security: false
+
+#skirtas paprastiems vartotojams prisijungti:
+#        sugalvotas:
+#            pattern:    ^/ (login)/
+#            http_basic: ~
+#            provider: our_db_provider
+##            https://symfony.com/doc/current/cookbook/security/form_login_setup.html
+#            form_login:
+#                login_path: /login
+#                check_path: /login_check
+
+#All other URLs will be handled by the default firewall
+#(no pattern key means it matches all URLs)
+        secured_area:
+#        pattern  irasytas ties useriu paswordu perkelimu,
+#  o anonymous - ties prisijungim forma.
+            anonymous: ~
+            pattern: ^/
+#            http_basic: ~
+            provider: our_db_provider
+            form_login:
+                check_path: /login_check
+                login_path: /login
+            logout:
+                path: /logout
+                target: /register
+
+    access_control:
+# require ROLE_ADMIN for /admin*
+         - { path: ^/admin, roles: ROLE_ADMIN }
+         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
