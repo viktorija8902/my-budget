@@ -32,7 +32,7 @@ expenses_in_detail:
 
 
 users_income:
-  path: /usersincome/
+  path: /usersincome
   defaults: { _controller: ViktorijaVikaBudgetBundle:ShowUserIncome:usersIncome }
 
 summing:

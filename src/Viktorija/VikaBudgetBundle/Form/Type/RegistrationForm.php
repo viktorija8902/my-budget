@@ -22,7 +22,7 @@ class RegistrationForm extends AbstractType {
     {
         $builder
             ->add('firstname', 'text', array(
-                'label'=>'Your firstname:',
+                'label'=>'Vardas:',
                 'label_attr'=>array(
                     'class'=>"col-sm-3 control-label",
                     ),
@@ -30,7 +30,7 @@ class RegistrationForm extends AbstractType {
             ))
 
             ->add('age', 'number', array(
-                'label'=>'Your age:',
+                'label'=>'Amžius:',
                 'label_attr'=>array(
                     'class'=>"col-sm-3 control-label",
                 ),
@@ -38,7 +38,7 @@ class RegistrationForm extends AbstractType {
             ))
 
             ->add('email', 'email', array(
-                'label'=>'Your email:',
+                'label'=>'Jūsų paštas:',
                 'label_attr'=>array(
                     'class'=>"col-sm-3 control-label",
                 ),
@@ -47,14 +47,14 @@ class RegistrationForm extends AbstractType {
 
 
             ->add('username', 'text', array(
-                'label'=>'Your username:',
+                'label'=>'Vartotojo vardas:',
                 'label_attr'=>array(
                     'class'=>"col-sm-3 control-label",
                 ),
                 'attr' => array('class' => "form-control")
             ))
             ->add('password', 'password', array(
-                'label'=>'Your password:',
+                'label'=>'Jūsų slaptažodis:',
                 'label_attr'=>array(
                     'class'=>"col-sm-3 control-label",
                 ),
@@ -62,7 +62,7 @@ class RegistrationForm extends AbstractType {
             ))
 
             ->add('save', 'submit', array(
-                'label' => 'Register',
+                'label' => 'Užsiregistruoti',
 
                 'attr' => array('class'=>"col-sm-offset-4 btn btn-default")
                 )
