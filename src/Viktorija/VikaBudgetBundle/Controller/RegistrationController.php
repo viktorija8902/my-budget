@@ -127,7 +127,7 @@ class RegistrationController extends Controller
             $em->persist($transport);
 
             $parents = new Income();
-            $parents -> setIncomeType('DAD/MOM/GRANDPA/GRANDMA/ETC GAVE ME USD');
+            $parents -> setIncomeType('DAD/MOM GAVE ME USD');
             $parents -> setPicture('');
             $parents -> setTotalThisWeek(0);
             $parents -> setTotalThisMonth(0);
