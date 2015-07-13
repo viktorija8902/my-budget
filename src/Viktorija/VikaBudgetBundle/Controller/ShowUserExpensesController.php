@@ -18,6 +18,10 @@ use Viktorija\VikaBudgetBundle\Entity\InDetail\ExpensesInDetail;
 class ShowUserExpensesController extends Controller
 {
 
+    /**
+     * @param Request $request
+     * @return mixed
+     */
     public function usersSpendingAction(Request $request)
     {
 
@@ -29,11 +33,26 @@ class ShowUserExpensesController extends Controller
         // the above is a shortcut for this
         /** @var $user BudgetUser */
         $user = $this->get('security.token_storage')->getToken()->getUser();
+//        $todayIs = date("Ymd");
 
+        //gets Id of expense that was entered in expense group, f.e. 103:
+//        $request = $this->get('request');
+//        $price=$request->request->get('PriceOfItem');
+//        $groupExpenseId=$request->request->get('IdOfExpense');
+
+        // using the the id of expense group, finds the Id of expense group in Expenses entity
+        //and gets all expenses of that group
+//        $em = $this->getDoctrine()->getManager();
+//        $expense = $em->getRepository('ViktorijaVikaBudgetBundle:Expenses')->find($groupExpenseId);
+//        $detailedExpenses = $expense->getTotalThisWeek();
+
+
+           // exit(\Doctrine\Common\Util\Debug::dump($detailedExpenses));
         return $this->render('ViktorijaVikaBudgetBundle:Default:usersSpending.html.twig',
             array(
                 "expenses" => $user->getExpenses(),
-                "firstname" => $user->getFirstname()
+                "firstname" => $user->getFirstname(),
+//                "current_date" => $todayIs
             ));
         //exit(\Doctrine\Common\Util\Debug::dump($expense));
     }
@@ -59,19 +78,16 @@ class ShowUserExpensesController extends Controller
         if ($expense->getBudgetUser()->getId() != $user->getId()) {
             return new Response("", 403);
         }
+        $todayIs = date("Ymd");
         $detailedExpense = new ExpensesInDetail();
         $detailedExpense->setItemPrice($price);
-        $detailedExpense->setDateAdded("1");
-
+        $detailedExpense->setDateAdded($todayIs);
         $detailedExpense->setExpenses($expense);
 
 //        exit(\Doctrine\Common\Util\Debug::dump($expenseGroupId));
         $em->persist($detailedExpense);
         $em->flush();
         return new Response("Ok");
-//        $return=json_encode($return);//jscon encode the array
-//        return new Response($return,200,array('Content-Type'=>'application/json'));//make sure it has the correct content type
-
     }
 
 
