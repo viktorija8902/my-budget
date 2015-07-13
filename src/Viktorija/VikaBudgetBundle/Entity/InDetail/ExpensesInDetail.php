@@ -11,9 +11,10 @@ namespace Viktorija\VikaBudgetBundle\Entity\InDetail;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
+
 /**
  * @ORM\Table(name="All_expenses_in_detail")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Viktorija\VikaBudgetBundle\Entity\InDetail\ExpensesInDetailRepository")
  */
 class ExpensesInDetail {
 
@@ -92,6 +93,7 @@ class ExpensesInDetail {
      * @param \Viktorija\VikaBudgetBundle\Entity\Expenses $expenses
      * @return ExpensesInDetail
      */
+
     public function setExpenses(\Viktorija\VikaBudgetBundle\Entity\Expenses $expenses = null)
     {
         $this->expenses = $expenses;
@@ -102,7 +104,7 @@ class ExpensesInDetail {
     /**
      * Get expenses
      *
-     * @return \Viktorija\VikaBudgetBundle\Entity\Expenses 
+     * @return \Viktorija\VikaBudgetBundle\Entity\Expenses
      */
     public function getExpenses()
     {
