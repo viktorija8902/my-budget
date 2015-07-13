@@ -2,7 +2,8 @@
 {%  block title %} {{ parent() }}AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAa {% endblock %}
 
 {#jquery input value pagavimas dar neveikia#}
-{% block javascripts %}
+{#{% block userspendingscript %}#}
+    {% block javascripts %}
     {{ parent() }}
     <script type="text/javascript">
         $(document).ready(function(){
@@ -27,28 +28,9 @@
                 $.post(url2, {
                     'PriceOfItem': $(this).find(".inputform").val(),
                     'IdOfExpense': $(this).find(".expenseId").val() });
-//
+
                 return false;
             });
-//            $(this).find('.weekOutput').html(data);
-//
-//           $('.plius').click(function() {
-////                var number = $( "form" ).serialize();
-////                $( "#results" ).text( number );
-//
-////            function sumExpenses() {
-//                var anotherExpense = $( "form" ).serialize();
-//                $( ".weekOutput" ).text( anotherExpense );
-//            }
-//            $( "input[type='checkbox'], input[type='radio']" ).on( "click", showValues );
-//            $( "select" ).on( "change", showValues );
-//            sumExpenses();
-//            $('.plius').click(function(){
-//                alert('iku');
-//                }
-//            );
-
-
         });
     </script>
 {% endblock %}
@@ -56,7 +38,7 @@
 
 {% block content %}
      {#{{ expenses[0].picture }}#}
-<div class="container-fluid">
+<div class="container-fluid expenses-fluid">
     <div class="row">
         <div class="col-sm-9">
             {% for expense in expenses %}
@@ -81,8 +63,9 @@
                         Total this week: <output class="weekOutput"> {{ expense.totalthisweek }} </output>
                         <br>
                         Total this month:  <output class="monthOutput">   {{ expense.totalthismonth }}</output>
+                        <br>
+                        {#{{ current_date }}#}
 
-                        {#Day: {{ expense.weekday }}#}
                     </div>
                     </form>
                 </div>
