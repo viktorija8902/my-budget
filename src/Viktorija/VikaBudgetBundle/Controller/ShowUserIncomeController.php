@@ -9,19 +9,23 @@
 namespace Viktorija\VikaBudgetBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
+use Viktorija\VikaBudgetBundle\Entity\BudgetUser;
+use Viktorija\VikaBudgetBundle\Entity\Income;
 
 class ShowUserIncomeController extends Controller{
 
-    public function usersIncomeAction()
+    public function usersIncomeAction(Request $request)
     {
         if (! $this->get('security.authorization_checker' ) ->isGranted('IS_AUTHENTICATED_FULLY' )) {
             throw $this->createAccessDeniedException();
         }
-        /** @var $user \Viktorija\VikaBudgetBundle\Entity\BudgetUser */
+        /** @var $user BudgetUser */
         $user = $this->get('security.token_storage')->getToken()->getUser();
 
-        return $this->render('ViktorijaVikaBudgetBundle:Income:usersIncome.html.twig',
+        return $this->render('ViktorijaVikaBudgetBundle:Default:usersIncome.html.twig',
             array(
+                "income" => $user->getIncome(),
                 "firstname"=>$user->getFirstname()
             ));
     }

@@ -276,8 +276,8 @@ class BudgetUser implements AdvancedUserInterface, \Serializable
     public function _construct()
     {
         $this->expenses = new ArrayCollection();
+        $this->income = new ArrayCollection();
     }
-
 
 
 
@@ -311,5 +311,54 @@ class BudgetUser implements AdvancedUserInterface, \Serializable
     public function getExpenses()
     {
         return $this->expenses;
+    }
+
+
+    /**
+     * @ORM\OneToMany(targetEntity="Viktorija\VikaBudgetBundle\Entity\Income", mappedBy="budgetUser")
+     */
+    protected $income;
+
+
+    /**
+     * @return mixed
+     */
+    public function getIncome()
+    {
+        return $this->income;
+    }
+
+    /**
+     * @param mixed $income
+     */
+    public function setIncome($income)
+    {
+        $this->income = $income;
+    }
+
+
+
+
+    /**
+     * Add income
+     *
+     * @param \Viktorija\VikaBudgetBundle\Entity\Income $income
+     * @return BudgetUser
+     */
+    public function addIncome(\Viktorija\VikaBudgetBundle\Entity\Income $income)
+    {
+        $this->income[] = $income;
+
+        return $this;
+    }
+
+    /**
+     * Remove income
+     *
+     * @param \Viktorija\VikaBudgetBundle\Entity\Income $income
+     */
+    public function removeIncome(\Viktorija\VikaBudgetBundle\Entity\Income $income)
+    {
+        $this->income->removeElement($income);
     }
 }
