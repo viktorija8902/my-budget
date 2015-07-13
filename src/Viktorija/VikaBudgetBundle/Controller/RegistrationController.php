@@ -12,6 +12,7 @@ namespace Viktorija\VikaBudgetBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Viktorija\VikaBudgetBundle\Entity\BudgetUser;
 use Viktorija\VikaBudgetBundle\Entity\Expenses;
+use Viktorija\VikaBudgetBundle\Entity\Income;
 use Symfony\Component\HttpFoundation\Request;
 use Viktorija\VikaBudgetBundle\Form\Type\RegistrationForm;
 use Symfony\Component\HttpFoundation\Response;
@@ -124,6 +125,56 @@ class RegistrationController extends Controller
             $transport -> setBudgetUser($user);
 
             $em->persist($transport);
+
+            $parents = new Income();
+            $parents -> setIncomeType('DAD/MOM/GRANDPA/GRANDMA/ETC GAVE ME USD');
+            $parents -> setPicture('');
+            $parents -> setTotalThisWeek(0);
+            $parents -> setTotalThisMonth(0);
+            $parents -> setWeekday(2015/07/07);
+            $parents -> setBudgetUser($user);
+
+            $em->persist($parents);
+
+            $grandparents = new Income();
+            $grandparents -> setIncomeType('GRANDPA/GRANDMA/ETC GAVE ME USD');
+            $grandparents -> setPicture('');
+            $grandparents -> setTotalThisWeek(0);
+            $grandparents -> setTotalThisMonth(0);
+            $grandparents -> setWeekday(2015/07/07);
+            $grandparents -> setBudgetUser($user);
+
+            $em->persist($grandparents);
+
+            $work = new Income();
+            $work -> setIncomeType('WORK USD');
+            $work -> setPicture('');
+            $work -> setTotalThisWeek(0);
+            $work -> setTotalThisMonth(0);
+            $work -> setWeekday(2015/07/07);
+            $work -> setBudgetUser($user);
+
+            $em->persist($work);
+
+            $gift = new Income();
+            $gift -> setIncomeType('GIFT USD');
+            $gift -> setPicture('');
+            $gift -> setTotalThisWeek(0);
+            $gift -> setTotalThisMonth(0);
+            $gift -> setWeekday(2015/07/07);
+            $gift -> setBudgetUser($user);
+
+            $em->persist($gift);
+
+            $foundOnStreet = new Income();
+            $foundOnStreet -> setIncomeType('I FOUND USD');
+            $foundOnStreet -> setPicture('');
+            $foundOnStreet -> setTotalThisWeek(0);
+            $foundOnStreet -> setTotalThisMonth(0);
+            $foundOnStreet -> setWeekday(2015/07/07);
+            $foundOnStreet -> setBudgetUser($user);
+
+            $em->persist($foundOnStreet);
 
             $em->flush();
 
