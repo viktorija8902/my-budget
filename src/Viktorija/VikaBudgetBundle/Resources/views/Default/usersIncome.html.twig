@@ -1,0 +1,76 @@
+{% extends 'ViktorijaVikaBudgetBundle:Default:meniu.html.twig' %}
+{%  block title %} {{ parent() }}AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAa {% endblock %}
+
+    {#{% block javascripts %}#}
+        {#{{ parent() }}#}
+        {#<script type="text/javascript">#}
+            {#$(document).ready(function(){#}
+
+                {#//listen for the form beeing submitted#}
+                {#$(".ExpenseForm").submit(function(){#}
+                    {#//get the url for the form#}
+                    {#var url1="{{path('summing')}}";#}
+                    {#&#123;&#35;var url2="{{path('expenses_in_detail')}}";&#35;&#125;#}
+
+                    {#var form = this;#}
+
+{#//                start send the post request#}
+                    {#$.post(url1, {#}
+                        {#'PriceOfItem': $(this).find(".inputform").val(),#}
+                        {#'IdOfExpense': $(this).find(".incomeTypeId").val() })#}
+                            {#.done(function( data ) {#}
+                                {#var contentToChange = $(form).find(".weekOutput");#}
+                                {#$(contentToChange).empty().append(data);#}
+
+                            {#});#}
+{#//                    $.post(url2, {#}
+{#//                        'PriceOfItem': $(this).find(".inputform").val(),#}
+{#//                        'IdOfExpense': $(this).find(".expenseId").val() });#}
+{#////#}
+                    {#return false;#}
+                {#});#}
+            {#});#}
+        {#</script>#}
+    {#{% endblock %}#}
+
+{% block content %}
+
+<div class="container-fluid income-fluid">
+    <div class="row">
+        <div class="col-sm-9">
+            {% for incomeType in income %}
+                <div class="col-md-4 col-sm-6 col-xs-12">
+
+                    <form class="IncomeForm" action="#">
+                        <a href="http://www.balsas.lt" class="incomeType"> {{ incomeType.incometype }} :</a>
+                        <div class="inputbuttonimage">
+                            <img class="incomeimage" src="{{ asset ('bundles/viktorijavikabudget/images/income_images/' ~ incomeType.picture ) }}" alt="Photo of schoolbus!" />
+                            <div class="enterprice">
+                                <input type="hidden" name="incomeId" class="incomeId" value="{{ incomeType.id }}" />
+                                <input type="number" name="price" class="inputform" value="" min="0" step="0.01" />
+                                <input class="addButton plius" type="submit" value="Send" />
+                                {#<input type="number" value="" min="0" step="0.01" class="inputform">#}
+                                {#<button class="addButton plius">+</button>#}
+                            </div>
+                        </div>
+                        {#</form>#}
+
+
+                        <div class="outputBlock" >
+                            Total this week: <output class="weekOutput"> {{ incomeType.totalthisweek }} </output>
+                            <br>
+                            Total this month:  <output class="monthOutput">   {{ incomeType.totalthismonth }}</output>
+
+                            {#Day: {{ expense.weekday }}#}
+                        </div>
+                    </form>
+                </div>
+            {% endfor %}
+
+        </div>
+
+
+    </div>
+
+</div>
+{%  endblock %}
