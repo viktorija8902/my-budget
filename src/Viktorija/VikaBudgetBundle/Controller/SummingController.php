@@ -7,6 +7,7 @@
  */
 
 namespace Viktorija\VikaBudgetBundle\Controller;
+
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
@@ -31,15 +32,17 @@ class SummingController extends Controller
 
 
         if($price!=0){//if the user has written his name
-            $this->forward('ViktorijaVikaBudgetBundle:ShowUserExpenses:detailedExpenses', array(
-                'price'  => $price,
-                'expenseGroupId' => $expenseId,
-            ));
+//            $this->forward('ViktorijaVikaBudgetBundle:ShowUserExpenses:detailedExpenses', array(
+//                'price'  => $price,
+//                'expenseGroupId' => $expenseId,
+//            ));
 
             $em = $this->getDoctrine()->getManager();
             $expense = $em->getRepository('ViktorijaVikaBudgetBundle:Expenses')->find($expenseId);
             $expensesInDatabase = $expense->getTotalThisWeek();
             $expensesInDatabase  = $expensesInDatabase + $price;
+
+
 //            exit(\Doctrine\Common\Util\Debug::dump($expensesInDatabase));
 
             $expense->setTotalThisWeek($expensesInDatabase);

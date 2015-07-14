@@ -8,6 +8,7 @@
 
 namespace Viktorija\VikaBudgetBundle\Controller;
 
+use Doctrine\ORM\EntityRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -38,16 +39,28 @@ class ShowUserExpensesController extends Controller
         //gets Id of expense that was entered in expense group, f.e. 103:
 //        $request = $this->get('request');
 //        $price=$request->request->get('PriceOfItem');
-//        $groupExpenseId=$request->request->get('IdOfExpense');
-
-        // using the the id of expense group, finds the Id of expense group in Expenses entity
-        //and gets all expenses of that group
-//        $em = $this->getDoctrine()->getManager();
-//        $expense = $em->getRepository('ViktorijaVikaBudgetBundle:Expenses')->find($groupExpenseId);
-//        $detailedExpenses = $expense->getTotalThisWeek();
+//        $groupExpenseId=$request->request->get($IdOfExpense);
 
 
-           // exit(\Doctrine\Common\Util\Debug::dump($detailedExpenses));
+//        $groupExpenseId = 160;
+//
+//        /** @var EntityRepository $repository */
+//        $repository = $this->getDoctrine()
+//            ->getRepository('Viktorija\VikaBudgetBundle\Entity\InDetail\ExpensesInDetail' );
+//        $weekOfYear = date("YW");
+//        $query = $repository->createQueryBuilder('p' )
+////            ->where('p.')
+//            ->where('p.weekOfYear = :weekOfYear AND p.expenses =:expenses' )
+//            ->setParameters(array(
+//                'weekOfYear' => $weekOfYear,
+//                'expenses' => $groupExpenseId,
+//            ))
+//            ->getQuery();
+//        $detailedExpenses = $query->getResult();
+//
+//        exit(\Doctrine\Common\Util\Debug::dump($detailedExpenses));
+
+
         return $this->render('ViktorijaVikaBudgetBundle:Default:usersSpending.html.twig',
             array(
                 "expenses" => $user->getExpenses(),
@@ -78,21 +91,19 @@ class ShowUserExpensesController extends Controller
         if ($expense->getBudgetUser()->getId() != $user->getId()) {
             return new Response("", 403);
         }
+//        $todayIs = date("F j, Y, g:i a");
         $todayIs = date("Ymd");
+        $weekOfYear = date("YW");
         $detailedExpense = new ExpensesInDetail();
         $detailedExpense->setItemPrice($price);
         $detailedExpense->setDateAdded($todayIs);
+        $detailedExpense->setWeekOfYear($weekOfYear);
         $detailedExpense->setExpenses($expense);
 
-//        exit(\Doctrine\Common\Util\Debug::dump($expenseGroupId));
         $em->persist($detailedExpense);
         $em->flush();
         return new Response("Ok");
     }
-
-
-//        $user = $this->get('security.token_storage')->getToken()->getUser();
-//        $expenses = $this->get('security.token_storage')->getToken()->getUser();
 
 
 }
