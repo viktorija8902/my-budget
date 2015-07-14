@@ -7,10 +7,12 @@
     <script type="text/javascript">
         $(document).ready(function() {
             $('#ireceived').click(function () {
-                $('.container-fluid').load('{{ path('users_income' ) }} .income-fluid');
+                $('.container-fluid').load('{{ path('users_income' ) }} .container-fluid');
+                return false;
             });
             $('#ispent').click(function () {
-                $('.container-fluid').load('{{ path ('usersspending') }} .expenses-fluid');
+                $('.container-fluid').load('{{ path ('usersspending') }} .container-fluid');
+                return false;
             });
         })
     </script>
@@ -25,12 +27,8 @@
 
         {#<div id="ireceived" >I received</div>#}
         {#<div class="col-md-12 col-sm-12 col-xs-6"> <a href = "www.google.lt" id="ireceived">I saved</a></div>#}
-        <div class="col-md-12 col-sm-12 col-xs-6"> <div id="ireceived">I received</div> </div>
-
-        {#<div class="col-md-12 col-sm-12 col-xs-6"> <a href = "{{ path('users_income' ) }}" id="ireceived">I received</a></div>#}
-        {#<div class="col-md-12 col-sm-12 col-xs-6"> <a href = "{{ path ('usersspending') }}" id = "ispent">I spent</a> </div>#}
-
-        <div class="col-md-12 col-sm-12 col-xs-6"> <div id = "ispent">I spent</div> </div>
+        <div class="col-md-12 col-sm-12 col-xs-6"> <a href ="{{ path('users_income' ) }}" id="ireceived">I received</a> </div>
+        <div class="col-md-12 col-sm-12 col-xs-6"> <a href = "{{ path ('usersspending') }}" id = "ispent">I spent</a> </div>
 
         <div class="col-md-12 col-sm-12 col-xs-6"> <a href = "http://www.google.lt" id = "isaved" >I saved</a></div>
         <div class="col-md-12 col-sm-12 col-xs-6"> <a href = "http://www.traders.lt" id="ianalysed" >Statistics</a></div>
