@@ -51,7 +51,7 @@ a {
     border: 5px solid pink;
     position: relative;
 }
-.expenseimage {
+.expenseimage, .incomeimage{
     width: 50%;
     height: 110px;
     float: right;
@@ -74,7 +74,7 @@ a {
     height: 60px;
     background-color: orange;
 }
-.expenseType {
+.expenseType, .incomeType {
     font-weight: bolder;
     font-size:  13px;
     font-family: cursive; 
