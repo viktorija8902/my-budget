@@ -41,6 +41,13 @@ class ExpensesInDetail {
      */
     private $weekOfYear;
 
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $monthOfYear;
+
+
     /**
      * @return mixed
      */
@@ -96,6 +103,22 @@ class ExpensesInDetail {
     public function setWeekOfYear($weekOfYear)
     {
         $this->weekOfYear = $weekOfYear;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMonthOfYear()
+    {
+        return $this->monthOfYear;
+    }
+
+    /**
+     * @param mixed $monthOfYear
+     */
+    public function setMonthOfYear($monthOfYear)
+    {
+        $this->monthOfYear = $monthOfYear;
     }
 
 
