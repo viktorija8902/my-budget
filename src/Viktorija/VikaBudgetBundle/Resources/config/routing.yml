@@ -35,11 +35,6 @@ users_income:
   path: /usersincome
   defaults: { _controller: ViktorijaVikaBudgetBundle:ShowUserIncome:usersIncome }
 
-summing:
-  path: /summing
-  defaults: { _controller: ViktorijaVikaBudgetBundle:Summing:sum }
-
-
 keitimas:
   path: /update/{id}
   defaults: { _controller: ViktorijaVikaBudgetBundle:Registration:update }
