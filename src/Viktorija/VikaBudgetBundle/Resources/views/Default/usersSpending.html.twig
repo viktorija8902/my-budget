@@ -13,13 +13,21 @@
                 var form = this;
 
 //               caching given input, sending it and showing the answer to the user:
-                $.post(url, {
-                    'PriceOfItem': $(this).find(".inputform").val(),
-                    'IdOfExpense': $(this).find(".expenseId").val() })
-                    .done(function( data ) {
+                $.ajax(url, {
+                    'data': {
+                        'PriceOfItem': $(this).find(".inputform").val(),
+                        'IdOfExpense': $(this).find(".expenseId").val()
+                    },
+                    'dataType': "json",
+                    'method': "POST"
+                })
+                    .done(function(data) {
                         var contentToChange1 = $(form).find(".weekOutput");
-                        $(contentToChange1).empty().append(data);
+                        $(contentToChange1).empty().append(data.weeklySum);
+                        var contentToChange2 = $(form).find(".monthOutput");
+                        $(contentToChange2).empty().append(data.monthlySum);
                     });
+
                 return false;
             });
         });
@@ -41,14 +49,14 @@
                             <div class="enterprice">
                                 <input type="hidden" name="expenseId" class="expenseId" value="{{ expense.id }}" />
                                 <input type="number" name="price" class="inputform" value="" min="0" step="0.01" />
-                                <input class="addButton plius" type="submit" value="Send" />
+                                <input class="addButton plius" type="submit" value="+" />
                             </div>
                         </div>
 
                     <div class="outputBlock" >
-                        Total this week: <output class="weekOutput"> {{ weeklySums[expense.id] }} </output>
+                        Total this week: <output class="weekOutput"> {{ weeklySums[expense.id] | default("0.00") }} </output>
                         <br>
-                        Total this month:  <output class="monthOutput">   {{ expense.totalthismonth }}</output>
+                        Total this month:  <output class="monthOutput">   {{ monthlySums[expense.id] | default("0.00")}}</output>
                     </div>
                     </form>
                 </div>
