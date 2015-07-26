@@ -10,6 +10,7 @@ namespace Viktorija\VikaBudgetBundle\Controller;
 
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Viktorija\VikaBudgetBundle\Entity\BudgetUser;
@@ -53,24 +54,24 @@ class ShowUserExpensesController extends Controller
         }
 
         //calculates user his monthly expenses:
-//        $monthlySums = array();
-//        foreach($user->getExpenses() as $expense) {
-//            $groupExpenseId = $expense->getId();
-//            /** @var EntityRepository $repository */
-//            $repository = $this->getDoctrine()
-//                ->getRepository('Viktorija\VikaBudgetBundle\Entity\InDetail\ExpensesInDetail' );
-//            $monthOfYear = date("YM");
-//            $query = $repository->createQueryBuilder('p' )
-//                ->select('sum(p.itemPrice)')
-//                ->where('p.monthOfYear = :monthOfYear AND p.expenses = :expenses' )
-//                ->setParameters(array(
-//                    'weekOfYear' => $monthOfYear,
-//                    'expenses' => $groupExpenseId,
-//                ))
-//                ->getQuery();
-//            $monthlySum = $query->getResult()[0][1];
-//            $monthlySums[$groupExpenseId] = $monthlySum;
-//        }
+        $monthlySums = array();
+        foreach($user->getExpenses() as $expense) {
+            $groupExpenseId = $expense->getId();
+            /** @var EntityRepository $repository */
+            $repository = $this->getDoctrine()
+                ->getRepository('Viktorija\VikaBudgetBundle\Entity\InDetail\ExpensesInDetail' );
+            $monthOfYear = date("Ym");
+            $query2 = $repository->createQueryBuilder('p' )
+                ->select('sum(p.itemPrice)')
+                ->where('p.monthOfYear = :monthOfYear AND p.expenses = :expenses' )
+                ->setParameters(array(
+                    'monthOfYear' => $monthOfYear,
+                    'expenses' => $groupExpenseId,
+                ))
+                ->getQuery();
+            $monthlySum = $query2->getResult()[0][1];
+            $monthlySums[$groupExpenseId] = $monthlySum;
+        }
 //        $todayIs = date("Ymd");
 
         //gets Id of expense that was entered in expense group, f.e. 103:
@@ -85,14 +86,14 @@ class ShowUserExpensesController extends Controller
             array(
                 "expenses" => $user->getExpenses(),
                 "firstname" => $user->getFirstname(),
-                "weeklySums" => $weeklySums
-               // "monthlySums" => $monthlySums
+                "weeklySums" => $weeklySums,
+                "monthlySums" => $monthlySums
 //                "current_date" => $todayIs
             ));
         //exit(\Doctrine\Common\Util\Debug::dump($expense));
     }
 
-    //flushes new price in database according it's category and renews weekly sums:
+    //flushes new price in database according it's category and renews weekly and monthly sums:
     public function detailedExpensesAction(Request $request)
     {
 
@@ -118,26 +119,27 @@ class ShowUserExpensesController extends Controller
 
         $todayIs = date("Ymd");
         $weekOfYear = date("YW");
-        //$monthOfYear = date("YM");
+        $monthOfYear = date("Ym");
 
         //creates new expense and flushes all given data in database:
         $detailedExpense = new ExpensesInDetail();
         $detailedExpense->setItemPrice($price);
         $detailedExpense->setDateAdded($todayIs);
         $detailedExpense->setWeekOfYear($weekOfYear);
-        $detailedExpense->setMonthOfYear(0);
+        $detailedExpense->setMonthOfYear($monthOfYear);
         $detailedExpense->setExpenses($expense);
 
         $em->persist($detailedExpense);
         $em->flush();
 
-        //sums weekly expenses after new expense was added:
+
         /** @var $user BudgetUser */
         $expenseGroupId = $request->request->get('IdOfExpense');
         /** @var EntityRepository $repository */
         $repository = $this->getDoctrine()->getRepository('Viktorija\VikaBudgetBundle\Entity\InDetail\ExpensesInDetail');
-        $weekOfYear = date("YW");
-        $query = $repository->createQueryBuilder('p')
+
+        //sums weekly expenses after new expense was added:
+        $query1 = $repository->createQueryBuilder('p')
             ->select('sum(p.itemPrice)')
             ->where('p.weekOfYear = :weekOfYear AND p.expenses = :expenses')
             ->setParameters(array(
@@ -145,11 +147,23 @@ class ShowUserExpensesController extends Controller
                 'expenses' => $expenseGroupId,
             ))
             ->getQuery();
-        $weeklySum = $query->getResult()[0][1];
+        $weeklySum = $query1->getResult()[0][1];
 
-        return new Response($weeklySum);
+        //sums monthly expenses after new expense was added:
+        $query2 = $repository->createQueryBuilder('z')
+            ->select('sum(z.itemPrice)')
+            ->where('z.monthOfYear = :monthOfYear AND z.expenses = :expenses')
+            ->setParameters(array(
+                'monthOfYear' => $monthOfYear,
+                'expenses' => $expenseGroupId,
+            ))
+            ->getQuery();
+        $monthlySum = $query2->getResult()[0][1];
+        $response = new JsonResponse();
+        $response->setData(array(
+            'weeklySum' =>$weeklySum,
+            'monthlySum'=>$monthlySum
+        ));
+        return $response;
     }
-
-
-
 }
