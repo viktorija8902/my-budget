@@ -30,6 +30,9 @@ expenses_in_detail:
   path: /detailed_expenses
   defaults: { _controller: ViktorijaVikaBudgetBundle:ShowUserExpenses:detailedExpenses }
 
+expenses_chart:
+  path: /expenses_chart
+  defaults: { _controller: ViktorijaVikaBudgetBundle:ExpensesStatistics:showExpensesChart }
 
 users_income:
   path: /usersincome
