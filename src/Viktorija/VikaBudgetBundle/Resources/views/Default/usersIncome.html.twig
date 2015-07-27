@@ -1,42 +1,67 @@
 {% extends 'ViktorijaVikaBudgetBundle:Default:meniu.html.twig' %}
-{%  block title %} {{ parent() }}AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAa {% endblock %}
+{%  block title %} {{ parent() }} Income {% endblock %}
 
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        $(document).ready(function(){
+            //listen for the form being submitted
+            $(".IncomeForm").submit(function(){
+                //get the url for the form
+                var url="{{path('renew_income')}}";
+                var form = this;
 
+//               caching given input, sending it and showing the answer to the user:
+                $.ajax(url, {
+                    'data': {
+                        'ReceivedAmount': $(this).find(".inputform").val(),
+                        'IdOfIncome': $(this).find(".incomeId").val()
+                    },
+                    'dataType': "json",
+                    'method': "POST"
+                })
+                        .done(function(data) {
+                            var contentToChange1 = $(form).find(".weekOutput");
+                            $(contentToChange1).empty().append(data.weeklySum);
+                            var contentToChange2 = $(form).find(".monthOutput");
+                            $(contentToChange2).empty().append(data.monthlySum);
+                        });
+                return false;
+            });
+        });
+    </script>
+{% endblock %}
 
 {% block content %}
 
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-9">
-            {% for incomeType in income %}
-                <div class="col-md-4 col-sm-6 col-xs-12">
 
+            {% for income in income %}
+                <div class="col-md-4 col-sm-6 col-xs-12">
                     <form class="IncomeForm" action="#">
-                        <a href="http://www.balsas.lt" class="incomeType"> {{ incomeType.incometype }} :</a>
+                        <a href="http://www.balsas.lt" class="incomeType"> {{ income.incometype }} :</a>
                         <div class="inputbuttonimage">
-                            <img class="incomeimage" src="{{ asset ('bundles/viktorijavikabudget/images/income_images/' ~ incomeType.picture ) }}" alt="Photo of schoolbus!" />
+                            <img class="incomeimage" src="{{ asset ('bundles/viktorijavikabudget/images/income_images/' ~ income.picture ) }}" alt="Photo of income!" />
                             <div class="enterprice">
-                                <input type="hidden" name="incomeId" class="incomeId" value="{{ incomeType.id }}" />
+                                <input type="hidden" name="incomeId" class="incomeId" value="{{ income.id }}" />
                                 <input type="number" name="price" class="inputform" value="" min="0" step="0.01" />
-                                <input class="addButton plius" type="submit" value="Send" />
+                                <input class="addButton plius" type="submit" value="+" />
                             </div>
                         </div>
 
                         <div class="outputBlock" >
-                            Total this week: <output class="weekOutput"> {{ incomeType.totalthisweek }} </output>
+                            Total this week: <output class="weekOutput"> {{ weeklySums[income.id] | default("0.00") }} </output>
                             <br>
-                            Total this month:  <output class="monthOutput">   {{ incomeType.totalthismonth }}</output>
-
-                            {#Day: {{ expense.weekday }}#}
+                            Total this month:  <output class="monthOutput"> {{ monthlySums[income.id] | default("0.00") }} </output>
                         </div>
                     </form>
                 </div>
             {% endfor %}
 
         </div>
-
-
     </div>
-
 </div>
+
 {%  endblock %}

@@ -38,13 +38,6 @@ class Expenses {
      */
     private $picture;
 
-
-    /**
-     * @ORM\Column(type="integer", length=100)
-     * @Assert\Type("\Date")
-     */
-    private $weekday;
-
     /**
      * @return mixed
      */
@@ -86,31 +79,12 @@ class Expenses {
         $this->picture = $picture;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getWeekday()
-    {
-        return $this->weekday;
-    }
-
-    /**
-     * @param mixed $weekday
-     */
-    public function setWeekday($weekday)
-    {
-        $this->weekday = $weekday;
-    }
-
-
-
 
     /**
      * @ORM\ManyToOne(targetEntity="Viktorija\VikaBudgetBundle\Entity\BudgetUser", inversedBy="expenses")
      * @ORM\JoinColumn(name="budgetUser_id", referencedColumnName="id")
      */
     protected $budgetUser;
-
 
 
     /**

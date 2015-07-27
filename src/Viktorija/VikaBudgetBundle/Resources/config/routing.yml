@@ -34,9 +34,17 @@ expenses_chart:
   path: /expenses_chart
   defaults: { _controller: ViktorijaVikaBudgetBundle:ExpensesStatistics:showExpensesChart }
 
+savings:
+  path: /savings
+  defaults: { _controller: ViktorijaVikaBudgetBundle:Savings:showSavings }
+
 users_income:
   path: /usersincome
-  defaults: { _controller: ViktorijaVikaBudgetBundle:ShowUserIncome:usersIncome }
+  defaults: { _controller: ViktorijaVikaBudgetBundle:ShowUserIncome:calculateIncome }
+
+renew_income:
+  path: /append_income
+  defaults: { _controller: ViktorijaVikaBudgetBundle:ShowUserIncome:renewIncome }
 
 keitimas:
   path: /update/{id}
