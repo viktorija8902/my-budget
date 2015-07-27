@@ -1,11 +1,11 @@
 {% extends 'ViktorijaVikaBudgetBundle:Default:upperpage.html.twig' %}
 
-{% block title %} {{ parent() }}AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAa {% endblock %}
+{% block title %} {{ parent() }} {% endblock %}
 
 {% block javascripts %}
     {{ parent() }}
     <script type="text/javascript">
-        $(document).ready(function() {
+       /* $(document).ready(function() {
             $('#ireceived').click(function () {
                 $('.container-fluid').load('{{ path('users_income' ) }} .container-fluid');
                 return false;
@@ -14,11 +14,15 @@
                 $('.container-fluid').load('{{ path ('usersspending') }} .container-fluid');
                 return false;
             });
+            $('#isaved').click(function () {
+                $('.container-fluid').load('{{ path ('savings') }} .container-fluid');
+                return false;
+            });
             $('#ianalysed').click(function () {
                 $('.container-fluid').load('{{ path ('expenses_chart') }} .container-fluid');
                 return false;
             });
-        })
+        })*/
     </script>
 {% endblock %}
 
@@ -26,24 +30,16 @@
 {%  block meniu %}
 
 <div class="row">
-
     <div class="col-sm-3">
-
-        {#<div id="ireceived" >I received</div>#}
-        {#<div class="col-md-12 col-sm-12 col-xs-6"> <a href = "www.google.lt" id="ireceived">I saved</a></div>#}
-        <div class="col-md-12 col-sm-12 col-xs-6"> <a href ="{{ path('users_income' ) }}" id="ireceived">I received</a> </div>
-        <div class="col-md-12 col-sm-12 col-xs-6"> <a href = "{{ path ('usersspending') }}" id = "ispent">I spent</a> </div>
-
-        <div class="col-md-12 col-sm-12 col-xs-6"> <a href = "http://www.google.lt" id = "isaved" >I saved</a></div>
+        <div class="col-md-12 col-sm-12 col-xs-6"> <a href ="{{ path('users_income' ) }}" id="ireceived">Income</a> </div>
+        <div class="col-md-12 col-sm-12 col-xs-6"> <a href = "{{ path ('usersspending') }}" id = "ispent">Expenses</a> </div>
+        <div class="col-md-12 col-sm-12 col-xs-6"> <a href = "{{ path ('savings') }}" id = "isaved" >Savings</a></div>
         <div class="col-md-12 col-sm-12 col-xs-6"> <a href = "{{ path ('expenses_chart') }}" id="ianalysed" >Statistics</a></div>
-
     </div>
 
-    {% block content %}
-    {% endblock %}
+    {% block content %} {% endblock %}
 
 </div>
-
 
 {% endblock %}
 

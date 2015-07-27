@@ -40,22 +40,6 @@ class Income {
 
 
     /**
-     * @ORM\Column(type="decimal", scale=2, length=100)
-     */
-    private $total_this_week;
-
-    /**
-     * @ORM\Column(type="decimal", scale=2, length=100)
-     */
-    private $total_this_month;
-
-    /**
-     * @ORM\Column(type="integer", length=100)
-     * @Assert\Type("\Date")
-     */
-    private $weekday;
-
-    /**
      * @return mixed
      */
     public function getId()
@@ -95,53 +79,8 @@ class Income {
         $this->picture = $picture;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getTotalThisWeek()
-    {
-        return $this->total_this_week;
-    }
 
-    /**
-     * @param mixed $total_this_week
-     */
-    public function setTotalThisWeek($total_this_week)
-    {
-        $this->total_this_week = $total_this_week;
-    }
 
-    /**
-     * @return mixed
-     */
-    public function getTotalThisMonth()
-    {
-        return $this->total_this_month;
-    }
-
-    /**
-     * @param mixed $total_this_month
-     */
-    public function setTotalThisMonth($total_this_month)
-    {
-        $this->total_this_month = $total_this_month;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getWeekday()
-    {
-        return $this->weekday;
-    }
-
-    /**
-     * @param mixed $weekday
-     */
-    public function setWeekday($weekday)
-    {
-        $this->weekday = $weekday;
-    }
 
     /**
      * @ORM\ManyToOne(targetEntity="Viktorija\VikaBudgetBundle\Entity\BudgetUser", inversedBy="income")
@@ -171,5 +110,49 @@ class Income {
     public function getBudgetUser()
     {
         return $this->budgetUser;
+    }
+
+    /**
+     * @ORM\OneToMany(targetEntity="Viktorija\VikaBudgetBundle\Entity\InDetail\IncomeInDetail", mappedBy="income")
+     */
+    protected $detailedIncome;
+
+    public function __construct()
+    {
+        $this->products = new ArrayCollection();
+    }
+
+
+    /**
+     * Add detailedIncome
+     *
+     * @param \Viktorija\VikaBudgetBundle\Entity\InDetail\IncomeInDetail $detailedIncome
+     * @return Income
+     */
+    public function addDetailedIncome(\Viktorija\VikaBudgetBundle\Entity\InDetail\IncomeInDetail $detailedIncome)
+    {
+        $this->detailedIncome[] = $detailedIncome;
+
+        return $this;
+    }
+
+    /**
+     * Remove detailedIncome
+     *
+     * @param \Viktorija\VikaBudgetBundle\Entity\InDetail\IncomeInDetail $detailedIncome
+     */
+    public function removeDetailedIncome(\Viktorija\VikaBudgetBundle\Entity\InDetail\IncomeInDetail $detailedIncome)
+    {
+        $this->detailedIncome->removeElement($detailedIncome);
+    }
+
+    /**
+     * Get detailedIncome
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getDetailedIncome()
+    {
+        return $this->detailedIncome;
     }
 }

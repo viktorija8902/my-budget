@@ -46,135 +46,109 @@ class RegistrationController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
 
-            $dinner = new Expenses();
-            $dinner -> setExpenseType('DINNER USD');
-            $dinner -> setPicture('dinner.jpg');
-            $dinner -> setTotalThisWeek(0);
-            $dinner -> setTotalThisMonth(0);
-            $dinner -> setWeekday(2015/07/07);
-            $dinner -> setBudgetUser($user);
+            $food = new Expenses();
+            $food -> setExpenseType('HEALTHY FOOD USD');
+            $food -> setPicture('dinner.jpg');
+           // $food -> setWeekday(2015/07/07);
+            $food -> setBudgetUser($user);
 
-            $em->persist($dinner);
+            $em->persist($food);
 
             $snacks = new Expenses();
             $snacks -> setExpenseType('SNACKS USD');
             $snacks -> setPicture('snacks.jpg');
-            $snacks -> setTotalThisWeek(0);
-            $snacks -> setTotalThisMonth(0);
-            $snacks -> setWeekday(2015/07/07);
+            //$snacks -> setWeekday(2015/07/07);
             $snacks -> setBudgetUser($user);
 
             $em->persist($snacks);
 
-            $fruits_and_vegetables = new Expenses();
-            $fruits_and_vegetables -> setExpenseType('FRUITS AND VEGETABLES USD');
-            $fruits_and_vegetables -> setPicture('fruits.jpg');
-            $fruits_and_vegetables -> setTotalThisWeek(0);
-            $fruits_and_vegetables -> setTotalThisMonth(0);
-            $fruits_and_vegetables -> setWeekday(2015/07/07);
-            $fruits_and_vegetables -> setBudgetUser($user);
+            $rent = new Expenses();
+            $rent -> setExpenseType('RENT USD');
+            $rent -> setPicture('rent.jpg');
+            //$rent -> setWeekday(2015/07/07);
+            $rent -> setBudgetUser($user);
 
-            $em->persist( $fruits_and_vegetables);
+            $em->persist($rent);
 
-            $toys = new Expenses();
-            $toys -> setExpenseType('TOYS USD');
-            $toys -> setPicture('toys.jpg');
-            $toys -> setTotalThisWeek(0);
-            $toys -> setTotalThisMonth(0);
-            $toys -> setWeekday(2015/07/07);
-            $toys -> setBudgetUser($user);
+            $outfit = new Expenses();
+            $outfit -> setExpenseType('OUTFIT USD');
+            $outfit -> setPicture('outfit.jpg');
+            //$outfit -> setWeekday(2015/07/07);
+            $outfit -> setBudgetUser($user);
 
-            $em->persist($toys);
+            $em->persist( $outfit);
 
-            $school_stuff = new Expenses();
-            $school_stuff -> setExpenseType('SCHOOL STUFF USD');
-            $school_stuff -> setPicture('pens.jpg');
-            $school_stuff -> setTotalThisWeek(0);
-            $school_stuff -> setTotalThisMonth(0);
-            $school_stuff -> setWeekday(2015/07/07);
-            $school_stuff -> setBudgetUser($user);
-
-            $em->persist($school_stuff);
-
-            $gifts = new Expenses();
-            $gifts -> setExpenseType('GIFTS USD');
-            $gifts -> setPicture('gifts.jpg');
-            $gifts -> setTotalThisWeek(0);
-            $gifts -> setTotalThisMonth(0);
-            $gifts -> setWeekday(2015/07/07);
-            $gifts -> setBudgetUser($user);
-
-            $em->persist($gifts);
-
-            $fun = new Expenses();
-            $fun -> setExpenseType('CINEMA, PARKS, TRIPS USD');
-            $fun -> setPicture('entertainment.jpg');
-            $fun -> setTotalThisWeek(0);
-            $fun -> setTotalThisMonth(0);
-            $fun -> setWeekday(2015/07/07);
-            $fun -> setBudgetUser($user);
-
-            $em->persist($fun);
-
-            $transport = new Expenses();
-            $transport -> setExpenseType('TRANSPORT USD');
-            $transport -> setPicture('transport.png');
-            $transport -> setTotalThisWeek(0);
-            $transport -> setTotalThisMonth(0);
-            $transport -> setWeekday(2015/07/07);
-            $transport -> setBudgetUser($user);
-
-            $em->persist($transport);
-
-            $parents = new Income();
-            $parents -> setIncomeType('DAD/MOM GAVE ME USD');
-            $parents -> setPicture('');
-            $parents -> setTotalThisWeek(0);
-            $parents -> setTotalThisMonth(0);
-            $parents -> setWeekday(2015/07/07);
-            $parents -> setBudgetUser($user);
-
-            $em->persist($parents);
-
-            $grandparents = new Income();
-            $grandparents -> setIncomeType('GRANDPA/GRANDMA/ETC GAVE ME USD');
-            $grandparents -> setPicture('');
-            $grandparents -> setTotalThisWeek(0);
-            $grandparents -> setTotalThisMonth(0);
-            $grandparents -> setWeekday(2015/07/07);
-            $grandparents -> setBudgetUser($user);
-
-            $em->persist($grandparents);
-
-            $work = new Income();
-            $work -> setIncomeType('WORK USD');
-            $work -> setPicture('');
-            $work -> setTotalThisWeek(0);
-            $work -> setTotalThisMonth(0);
-            $work -> setWeekday(2015/07/07);
+            $work = new Expenses();
+            $work -> setExpenseType('WORK STUFF USD');
+            $work -> setPicture('work.jpg');
+            //$work -> setWeekday(2015/07/07);
             $work -> setBudgetUser($user);
 
             $em->persist($work);
 
-            $gift = new Income();
-            $gift -> setIncomeType('GIFT USD');
-            $gift -> setPicture('');
-            $gift -> setTotalThisWeek(0);
-            $gift -> setTotalThisMonth(0);
-            $gift -> setWeekday(2015/07/07);
-            $gift -> setBudgetUser($user);
+            $sport = new Expenses();
+            $sport -> setExpenseType('SPORT USD');
+            $sport -> setPicture('sport.jpg');
+            //$sport -> setWeekday(2015/07/07);
+            $sport -> setBudgetUser($user);
 
-            $em->persist($gift);
+            $em->persist($sport);
 
-            $foundOnStreet = new Income();
-            $foundOnStreet -> setIncomeType('I FOUND USD');
-            $foundOnStreet -> setPicture('');
-            $foundOnStreet -> setTotalThisWeek(0);
-            $foundOnStreet -> setTotalThisMonth(0);
-            $foundOnStreet -> setWeekday(2015/07/07);
-            $foundOnStreet -> setBudgetUser($user);
+            $vacation = new Expenses();
+            $vacation -> setExpenseType('VACATION USD');
+            $vacation -> setPicture('vacation.jpg');
+            //$fun -> setWeekday(2015/07/07);
+            $vacation -> setBudgetUser($user);
 
-            $em->persist($foundOnStreet);
+            $em->persist($vacation);
+
+            $transport = new Expenses();
+            $transport -> setExpenseType('TRANSPORT USD');
+            $transport -> setPicture('transport.jpg');
+            //$transport -> setWeekday(2015/07/07);
+            $transport -> setBudgetUser($user);
+
+            $em->persist($transport);
+
+            $job1 = new Income();
+            $job1 -> setIncomeType('JOB1 USD');
+            $job1 -> setPicture('job1.jpg');
+            //$parents -> setWeekday(2015/07/07);
+            $job1 -> setBudgetUser($user);
+
+            $em->persist($job1);
+
+            $job2 = new Income();
+            $job2 -> setIncomeType('JOB2 USD');
+            $job2 -> setPicture('job2.jpeg');
+            //$grandparents -> setWeekday(2015/07/07);
+            $job2 -> setBudgetUser($user);
+
+            $em->persist($job2);
+
+            $investment = new Income();
+            $investment -> setIncomeType('INVESTMENT USD');
+            $investment -> setPicture('investment.jpg');
+            //$work -> setWeekday(2015/07/07);
+            $investment -> setBudgetUser($user);
+
+            $em->persist($investment);
+
+            $business = new Income();
+            $business -> setIncomeType('BUSINESS USD');
+            $business -> setPicture('business.jpg');
+            //$gift -> setWeekday(2015/07/07);
+            $business -> setBudgetUser($user);
+
+            $em->persist($business);
+
+            $gifts = new Income();
+            $gifts -> setIncomeType('GIFTS USD');
+            $gifts -> setPicture('gifts.jpg');
+            //$foundOnStreet -> setWeekday(2015/07/07);
+            $gifts -> setBudgetUser($user);
+
+            $em->persist($gifts);
 
             $em->flush();
 
@@ -191,71 +165,4 @@ class RegistrationController extends Controller
     {
         return $this->render('ViktorijaVikaBudgetBundle:Default:registrationCompleted.html.twig');
     }
-
-//    updates data. pay attention to routing.yml file
-//    public function updateAction($id)
-//    {
-//        $em = $this->getDoctrine()->getManager();
-//        $user = $em->getRepository('ViktorijaVikaBudgetBundle:BudgetUser')->find($id);
-//
-//        $user->setAge('10');
-//        $em->flush();
-//        return $this->redirectToRoute('login_route');
-//    }
-
-//    public function createExpenseAction()
-//    {
-//        $user = new BudgetUser();
-//        $user->setFirstname("Aistija");
-//        $user->setAge("10");
-//        $user->setEmail("aiste@gmail.com");
-//        $user->setUsername('aistija');
-//        $user->setPassword("aiste");
-//
-////        $newExpense = new Expenses();
-////        $newExpense->setExpenses("pancakes");
-////        $newExpense->setPrice(10);
-//
-//        // relate this product to the category
-//        $newExpense->setBudgetUser($user);
-//
-//        $em = $this->getDoctrine()->getManager();
-//        $em->persist($user);
-//        $em->persist($newExpense);
-//        $em->flush();
-//
-//        return new Response(
-//            'Created expense id: '.$newExpense->getId()
-//            .' and user id: '.$user->getId()
-//        );
-//    }
-
-//    public function showExpenseAction($id)
-//    {
-//        $user = $this->getDoctrine()
-//            ->getRepository('Viktorija\VikaBudgetBundle\Entity\BudgetUser')
-//            ->find($id);
-//
-//        $expen = $user->getExpenses()->getExpenseType();
-//        exit(\Doctrine\Common\Util\Debug::dump($expen));
-//        //return $this->render('ViktorijaVikaBudgetBundle:Default:usersSpending.html.twig');
-////        return new Response
-////        ("expenses the user has are".$expense
-////        );
-//    }
-//
-//    public function showPeopleAction($id)
-//    {
-//        $expense = $this->getDoctrine()
-//            ->getRepository('ViktorijaVikaBudgetBundle:Expenses')
-//            ->find($id);
-//
-//        $user = $expense->getBudgetUser()->getFirstname();
-//        exit(\Doctrine\Common\Util\Debug::dump($user));
-//
-////        return new Response
-////        ("expenses the user has are".$expense
-////        );
-//    }
-
 }
