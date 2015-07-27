@@ -40,16 +40,6 @@ class Expenses {
 
 
     /**
-     * @ORM\Column(type="decimal", scale=2, length=100)
-     */
-    private $total_this_week;
-
-    /**
-     * @ORM\Column(type="decimal", scale=2, length=100)
-     */
-    private $total_this_month;
-
-    /**
      * @ORM\Column(type="integer", length=100)
      * @Assert\Type("\Date")
      */
@@ -96,42 +86,6 @@ class Expenses {
         $this->picture = $picture;
     }
 
-
-
-
-
-    /**
-     * @return mixed
-     */
-    public function getTotalThisMonth()
-    {
-        return $this->total_this_month;
-    }
-
-    /**
-     * @param mixed $total_this_month
-     */
-    public function setTotalThisMonth($total_this_month)
-    {
-        $this->total_this_month = $total_this_month;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getTotalThisWeek()
-    {
-        return $this->total_this_week;
-    }
-
-    /**
-     * @param mixed $total_this_week
-     */
-    public function setTotalThisWeek($total_this_week)
-    {
-        $this->total_this_week = $total_this_week;
-    }
-
     /**
      * @return mixed
      */
@@ -158,50 +112,6 @@ class Expenses {
     protected $budgetUser;
 
 
-//    /**
-//     * Set budgetUser
-//     *
-//     * @param \Viktorija\VikaBudgetBundle\Entity\BudgetUser $budgetuser
-//     * @return Expenses
-//     */
-//    public function setBudgetUser(\Viktorija\VikaBudgetBundle\Entity\BudgetUser $budgetUser = null)
-//    {
-//        $this->budgetUser = $budgetUser;
-//
-//        return $this;
-//    }
-//
-//    /**
-//     * Get budgetUser
-//     *
-//     * @return \Viktorija\VikaBudgetBundle\Entity\BudgetUser
-//     */
-//    public function getBudgetUser()
-//    {
-//        return $this->budgetUser;
-//    }
-
-//    /**
-//     * Set budgetUser
-//     *
-//     * @param \Viktorija\VikaBudgetBundle\Entity\BudgetUser $budgetUser
-//     * @return Expenses
-//     */
-//    public function setBudgetUser(\Viktorija\VikaBudgetBundle\Entity\BudgetUser $budgetUser = null)
-//    {
-//        $this->budgetUser = $budgetUser;
-//        return $this;
-//    }
-
-//    /**
-//     * Get budgetUser
-//     *
-//     * @return \Viktorija\VikaBudgetBundle\Entity\BudgetUser
-//     */
-//    public function getBudgetUser()
-//    {
-//        return $this->budgetUser;
-//    }
 
     /**
      * Set budgetUser
