@@ -8,11 +8,14 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 
 /**
  * @ORM\Table(name="Users")
  * @ORM\Entity(repositoryClass="Viktorija\VikaBudgetBundle\Entity\UserRepository")
+ * @UniqueEntity(fields="email", message="Email is already in use")
+ * @UniqueEntity(fields="username", message="Username is already in use")
  */
 class BudgetUser implements AdvancedUserInterface, \Serializable
 {
@@ -31,9 +34,46 @@ class BudgetUser implements AdvancedUserInterface, \Serializable
 
 
     /**
-    * @ORM\Column(type="integer", )
+    * @Assert\Range(
+    *      min = 3,
+    *      max = 123,
+    *      minMessage = "You must be at least 3 to enter",
+    *      maxMessage = "Nice try! Are you really older than the oldest person ever?"
+    * )
+    * @ORM\Column(type="integer")
     */
     private $age;
+
+
+    /**
+     * @Assert\NotBlank()
+     * @ORM\Column(type="string", length=25, unique=true)
+     */
+    private $username;
+
+    /**
+     * @ORM\Column(type="string", length=64)
+     * @Assert\NotBlank()
+     * @Assert\Length(min=5)
+     */
+    private $password;
+
+    /**
+     * @ORM\Column(type="string", length=60, unique=true)
+     * @Assert\NotBlank()
+     * @Assert\Email()
+     */
+    private $email;
+
+    /**
+     * @ORM\Column(name="is_active", type="boolean")
+     */
+    private $isActive;
+
+    public function __construct()
+    {
+        $this->isActive = true;
+    }
 
     /**
      * @return mixed
@@ -71,36 +111,6 @@ class BudgetUser implements AdvancedUserInterface, \Serializable
 
 
 
-    /**
-     * @ORM\Column(type="string", length=25, unique=true)
-     */
-    private $username;
-
-    /**
-     * @ORM\Column(type="string", length=64)
-     * @Assert\NotBlank()
-     * @Assert\Length(min=2)
-     */
-    private $password;
-
-    /**
-     * @ORM\Column(type="string", length=60, unique=true)
-     * @Assert\NotBlank()
-     * @Assert\Email()
-     */
-    private $email;
-
-    /**
-     * @ORM\Column(name="is_active", type="boolean")
-     */
-    private $isActive;
-
-    public function __construct()
-    {
-        $this->isActive = true;
-        // may not be needed, see section on salt below
-        // $this->salt = md5(uniqid(null, true));
-    }
 
     public function getUsername()
     {
@@ -109,8 +119,6 @@ class BudgetUser implements AdvancedUserInterface, \Serializable
 
     public function getSalt()
     {
-        // you *may* need a real salt depending on your encoder
-        // see section on salt below
         return null;
     }
 
@@ -136,8 +144,6 @@ class BudgetUser implements AdvancedUserInterface, \Serializable
             $this->username,
             $this->password,
             $this->isActive
-            // see section on salt below
-            // $this->salt,
         ));
     }
 
@@ -149,8 +155,6 @@ class BudgetUser implements AdvancedUserInterface, \Serializable
             $this->username,
             $this->password,
             $this->isActive
-            // see section on salt below
-            // $this->salt
             ) = unserialize($serialized);
     }
 
@@ -267,7 +271,7 @@ class BudgetUser implements AdvancedUserInterface, \Serializable
     {
         return $this->username !== $this->password;
     }
-//ar geras mapped by, gal tiesiog parašyti Id? dar ties one to many buvo , mappedBy="budgetUser"
+
     /**
      * @ORM\OneToMany(targetEntity="Viktorija\VikaBudgetBundle\Entity\Expenses", mappedBy="budgetUser")
      */

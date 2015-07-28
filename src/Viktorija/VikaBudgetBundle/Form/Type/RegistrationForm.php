@@ -22,7 +22,7 @@ class RegistrationForm extends AbstractType {
     {
         $builder
             ->add('firstname', 'text', array(
-                'label'=>'Firstname:',
+                'label'=>'Firstname*:',
                 'label_attr'=>array(
                     'class'=>"col-sm-3 control-label",
                     ),
@@ -38,7 +38,7 @@ class RegistrationForm extends AbstractType {
             ))
 
             ->add('email', 'email', array(
-                'label'=>'Email:',
+                'label'=>'Email*:',
                 'label_attr'=>array(
                     'class'=>"col-sm-3 control-label",
                 ),
@@ -47,14 +47,14 @@ class RegistrationForm extends AbstractType {
 
 
             ->add('username', 'text', array(
-                'label'=>'Username:',
+                'label'=>'Username*:',
                 'label_attr'=>array(
                     'class'=>"col-sm-3 control-label",
                 ),
                 'attr' => array('class' => "form-control")
             ))
             ->add('password', 'password', array(
-                'label'=>'Password:',
+                'label'=>'Password*:',
                 'label_attr'=>array(
                     'class'=>"col-sm-3 control-label",
                 ),
