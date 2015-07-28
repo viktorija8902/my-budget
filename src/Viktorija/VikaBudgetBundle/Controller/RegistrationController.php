@@ -49,7 +49,6 @@ class RegistrationController extends Controller
             $food = new Expenses();
             $food -> setExpenseType('HEALTHY FOOD USD');
             $food -> setPicture('dinner.jpg');
-           // $food -> setWeekday(2015/07/07);
             $food -> setBudgetUser($user);
 
             $em->persist($food);
@@ -57,7 +56,6 @@ class RegistrationController extends Controller
             $snacks = new Expenses();
             $snacks -> setExpenseType('SNACKS USD');
             $snacks -> setPicture('snacks.jpg');
-            //$snacks -> setWeekday(2015/07/07);
             $snacks -> setBudgetUser($user);
 
             $em->persist($snacks);
@@ -65,7 +63,6 @@ class RegistrationController extends Controller
             $rent = new Expenses();
             $rent -> setExpenseType('RENT USD');
             $rent -> setPicture('rent.jpg');
-            //$rent -> setWeekday(2015/07/07);
             $rent -> setBudgetUser($user);
 
             $em->persist($rent);
@@ -73,7 +70,6 @@ class RegistrationController extends Controller
             $outfit = new Expenses();
             $outfit -> setExpenseType('OUTFIT USD');
             $outfit -> setPicture('outfit.jpg');
-            //$outfit -> setWeekday(2015/07/07);
             $outfit -> setBudgetUser($user);
 
             $em->persist( $outfit);
@@ -81,7 +77,6 @@ class RegistrationController extends Controller
             $work = new Expenses();
             $work -> setExpenseType('WORK STUFF USD');
             $work -> setPicture('work.jpg');
-            //$work -> setWeekday(2015/07/07);
             $work -> setBudgetUser($user);
 
             $em->persist($work);
@@ -89,7 +84,6 @@ class RegistrationController extends Controller
             $sport = new Expenses();
             $sport -> setExpenseType('SPORT USD');
             $sport -> setPicture('sport.jpg');
-            //$sport -> setWeekday(2015/07/07);
             $sport -> setBudgetUser($user);
 
             $em->persist($sport);
@@ -97,7 +91,6 @@ class RegistrationController extends Controller
             $vacation = new Expenses();
             $vacation -> setExpenseType('VACATION USD');
             $vacation -> setPicture('vacation.jpg');
-            //$fun -> setWeekday(2015/07/07);
             $vacation -> setBudgetUser($user);
 
             $em->persist($vacation);
@@ -105,7 +98,6 @@ class RegistrationController extends Controller
             $transport = new Expenses();
             $transport -> setExpenseType('TRANSPORT USD');
             $transport -> setPicture('transport.jpg');
-            //$transport -> setWeekday(2015/07/07);
             $transport -> setBudgetUser($user);
 
             $em->persist($transport);
@@ -113,7 +105,6 @@ class RegistrationController extends Controller
             $job1 = new Income();
             $job1 -> setIncomeType('JOB1 USD');
             $job1 -> setPicture('job1.jpg');
-            //$parents -> setWeekday(2015/07/07);
             $job1 -> setBudgetUser($user);
 
             $em->persist($job1);
@@ -121,7 +112,6 @@ class RegistrationController extends Controller
             $job2 = new Income();
             $job2 -> setIncomeType('JOB2 USD');
             $job2 -> setPicture('job2.jpeg');
-            //$grandparents -> setWeekday(2015/07/07);
             $job2 -> setBudgetUser($user);
 
             $em->persist($job2);
@@ -129,7 +119,6 @@ class RegistrationController extends Controller
             $investment = new Income();
             $investment -> setIncomeType('INVESTMENT USD');
             $investment -> setPicture('investment.jpg');
-            //$work -> setWeekday(2015/07/07);
             $investment -> setBudgetUser($user);
 
             $em->persist($investment);
@@ -137,7 +126,6 @@ class RegistrationController extends Controller
             $business = new Income();
             $business -> setIncomeType('BUSINESS USD');
             $business -> setPicture('business.jpg');
-            //$gift -> setWeekday(2015/07/07);
             $business -> setBudgetUser($user);
 
             $em->persist($business);
@@ -145,7 +133,6 @@ class RegistrationController extends Controller
             $gifts = new Income();
             $gifts -> setIncomeType('GIFTS USD');
             $gifts -> setPicture('gifts.jpg');
-            //$foundOnStreet -> setWeekday(2015/07/07);
             $gifts -> setBudgetUser($user);
 
             $em->persist($gifts);
