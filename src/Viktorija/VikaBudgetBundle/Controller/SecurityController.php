@@ -27,15 +27,12 @@ class SecurityController extends Controller {
         // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
 
-        //$form = $this->createFormBuilder();
-
         return $this->render(
             'ViktorijaVikaBudgetBundle:Default:login.html.twig',
             array(
                 // last username entered by the user
                 'last_username' => $lastUsername,
                 'error'         => $error,
-                //'form' => $form->createView()
             )
         );
     }

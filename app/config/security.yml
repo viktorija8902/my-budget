@@ -16,13 +16,13 @@ security:
 #configuration" provider:
     providers:
 #    kaip buvo pdf, adminui
-        in_memory:
-            memory:
-                users:
-                    admin:
-#                    encoded password is "kitten"
-                        password: $2a$12$7FFsG.q5cmT.55TYtYwT2OrZRdZvjiYoDg8RbPRRiAQyh329A7CAC
-                        roles: 'ROLE_ADMIN'
+#        in_memory:
+#            memory:
+#                users:
+#                    admin:
+#                     encoded password is "kitten"
+#                        password: $2a$12$7FFsG.q5cmT.55TYtYwT2OrZRdZvjiYoDg8RbPRRiAQyh329A7CAC
+#                        roles: 'ROLE_ADMIN'
 
 #        useriams
         our_db_provider:

@@ -25,7 +25,7 @@ class ShowUserExpensesController extends Controller
      * @return mixed
      */
     //calculates user his weekly and monthly expenses:
-    public function usersSpendingAction(Request $request)
+    public function calculateExpensesAction(Request $request)
     {
         if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
             throw $this->createAccessDeniedException();
@@ -94,7 +94,7 @@ class ShowUserExpensesController extends Controller
     }
 
     //flushes new price in database according it's category and renews weekly and monthly sums:
-    public function detailedExpensesAction(Request $request)
+    public function renewExpensesAction(Request $request)
     {
 
         if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {

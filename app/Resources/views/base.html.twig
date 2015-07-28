@@ -14,12 +14,8 @@
 
             {% stylesheets 'bundles/viktorijavikabudget/css/bootstrap-theme.css'  filter='cssrewrite' %}
             <link rel="stylesheet" href="{{ asset_url }}"/>
-
             <link rel="stylesheet" type="text/css" media="screen" href="{{ asset_url }}" />
             {% endstylesheets %}
-
-
-            {#<link href="{{ asset('bundles/viktorijavikabudget/css/biudzetostilius.css' ) }}" rel="stylesheet" />#}
         {% endblock %}
 
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
@@ -27,7 +23,6 @@
     <body>
         {% block body %}{% endblock %}
         {% block javascripts %}
-            {#<script src="{{ asset('js/main.js' ) }}"></script>#}
             <script src="{{ asset('bundles/viktorijavikabudget/js/jquery.min.js') }}"></script>
         {% endblock %}
     </body>

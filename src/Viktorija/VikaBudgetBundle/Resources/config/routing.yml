@@ -6,10 +6,6 @@ _registration_completed:
   path: /registration_completed
   defaults: { _controller: ViktorijaVikaBudgetBundle:Registration:registrationCompleted }
 
-adminLogin:
-  path: /admin
-  defaults: { _controller: ViktorijaVikaBudgetBundle:Default:admin }
-
 login_route:
   path:     /login
   defaults: { _controller: ViktorijaVikaBudgetBundle:Security:login }
@@ -22,50 +18,30 @@ login_check:
 logout:
   path: /logout
 
-usersspending:
-  path: /usersspending/
-  defaults: { _controller: ViktorijaVikaBudgetBundle:ShowUserExpenses:usersSpending }
+users_income:
+  path: /users_income
+  defaults: { _controller: ViktorijaVikaBudgetBundle:ShowUserIncome:calculateIncome }
 
-expenses_in_detail:
-  path: /detailed_expenses
-  defaults: { _controller: ViktorijaVikaBudgetBundle:ShowUserExpenses:detailedExpenses }
+renew_income:
+  path: /renew_income
+  defaults: { _controller: ViktorijaVikaBudgetBundle:ShowUserIncome:renewIncome }
 
-expenses_chart:
-  path: /expenses_chart
-  defaults: { _controller: ViktorijaVikaBudgetBundle:ExpensesStatistics:showExpensesChart }
+users_expenses:
+  path: /users_expenses
+  defaults: { _controller: ViktorijaVikaBudgetBundle:ShowUserExpenses:calculateExpenses }
+
+renew_expenses:
+  path: /renew_expenses
+  defaults: { _controller: ViktorijaVikaBudgetBundle:ShowUserExpenses:renewExpenses }
 
 savings:
   path: /savings
   defaults: { _controller: ViktorijaVikaBudgetBundle:Savings:showSavings }
 
-users_income:
-  path: /usersincome
-  defaults: { _controller: ViktorijaVikaBudgetBundle:ShowUserIncome:calculateIncome }
+expenses_chart:
+  path: /expenses_chart
+  defaults: { _controller: ViktorijaVikaBudgetBundle:ExpensesStatistics:showExpensesChart }
 
-renew_income:
-  path: /append_income
-  defaults: { _controller: ViktorijaVikaBudgetBundle:ShowUserIncome:renewIncome }
 
-keitimas:
-  path: /update/{id}
-  defaults: { _controller: ViktorijaVikaBudgetBundle:Registration:update }
 
-test:
-  path: /test
-  defaults: { _controller: ViktorijaVikaBudgetBundle:Registration:createExpense }
 
-show_expense:
-  path: /showexpenses/{id}
-  defaults: { _controller: ViktorijaVikaBudgetBundle:Registration:showExpense }
-
-show_people:
-  path: /showpeople/{id}
-  defaults: { _controller: ViktorijaVikaBudgetBundle:Registration:showPeople }
-
-jQuery_test:
-  path: /testjquery
-  defaults: { _controller: ViktorijaVikaBudgetBundle:TestJQuery:test }
-
-ajax_test:
-  path: /testajax
-  defaults: { _controller: ViktorijaVikaBudgetBundle:TestJQuery:ajaxResponse }

@@ -1,6 +1,9 @@
 {% extends '::base.html.twig' %}
 
 {% block body %}
-   Thank you, your registration was successfull!
-    <a href="{{ path('login_route') }}">Please login</a>
+    <div class="container">
+        <img id = "upperImage" src="{{ asset ('bundles/viktorijavikabudget/images/titleImage.jpg')}}" alt = "It is written 'My Budget'" />
+
+        <div>Thank you, your registration was successful! <a href="{{ path('login_route') }}">Please login</a></div>
+   </div>
 {% endblock %}
