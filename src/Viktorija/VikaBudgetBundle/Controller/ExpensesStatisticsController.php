@@ -28,8 +28,6 @@ class ExpensesStatisticsController extends Controller{
         /** @var $user BudgetUser */
         $user = $this->get('security.token_storage')->getToken()->getUser();
 
-
-
         return $this->render('ViktorijaVikaBudgetBundle:Default:statisticsExpenses.html.twig', array(
             "firstname"=>$user->getFirstname()
         ));

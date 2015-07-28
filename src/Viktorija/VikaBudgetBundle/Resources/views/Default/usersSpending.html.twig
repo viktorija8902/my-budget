@@ -1,7 +1,6 @@
 {% extends 'ViktorijaVikaBudgetBundle:Default:meniu.html.twig' %}
-{%  block title %} {{ parent() }}AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAa {% endblock %}
+{%  block title %} {{ parent() }} {% endblock %}
 
-{#jquery input value pagavimas dar neveikia#}
     {% block javascripts %}
     {{ parent() }}
     <script type="text/javascript">
@@ -9,7 +8,7 @@
             //listen for the form being submitted
             $(".ExpenseForm").submit(function(){
                 //get the url for the form
-                var url="{{path('expenses_in_detail')}}";
+                var url="{{path('renew_expenses')}}";
                 var form = this;
 
 //               caching given input, sending it and showing the answer to the user:
