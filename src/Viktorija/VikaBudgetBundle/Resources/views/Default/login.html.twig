@@ -4,11 +4,14 @@
 <div class="container">
 <section class="login">
     <article>
+
+        <img id = "upperImage" src="{{ asset ('bundles/viktorijavikabudget/images/titleImage.jpg')}}" alt = "It is written 'My Budget'" />
+        <br>
+        <br>
+
         {% if error %}
             <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
         {% endif %}
-        <div> <h1> Home Budget </h1></div>
-
 
         <form class="form-horizontal" action="{{ path('login_check') }}" method="post">
 
@@ -31,7 +34,6 @@
                 #}
                 <input type="hidden" name="_target_path" value="/usersspending" />
 
-
              {#dėl saugumo:#}
                 <input type="hidden" name="_csrf_token"
                        value="{{ csrf_token('authenticate') }}"
@@ -39,11 +41,9 @@
 
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
-                    <button type="submit" class="btn btn-default">login</button>
+                    <button type="submit" class="btn btn-default btn-lg">login</button>
                 </div>
             </div>
-
-
         </form>
 
     </article>

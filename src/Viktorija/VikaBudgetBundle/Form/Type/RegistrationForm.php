@@ -45,13 +45,13 @@ class RegistrationForm extends AbstractType {
                 'attr' => array('class' => "form-control")
             ))
 
-
             ->add('username', 'text', array(
                 'label'=>'Username*:',
                 'label_attr'=>array(
                     'class'=>"col-sm-3 control-label",
                 ),
                 'attr' => array('class' => "form-control")
+
             ))
             ->add('password', 'password', array(
                 'label'=>'Password*:',
@@ -63,8 +63,7 @@ class RegistrationForm extends AbstractType {
 
             ->add('save', 'submit', array(
                 'label' => 'Register',
-
-                'attr' => array('class'=>"col-sm-offset-4 btn btn-default")
+                'attr' => array('class'=>"col-sm-offset-4 btn btn-default btn-lg")
                 )
             )
             ->getForm();

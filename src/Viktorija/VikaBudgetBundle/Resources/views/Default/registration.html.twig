@@ -2,10 +2,10 @@
 
 
 {% block body %}
-    <div> <h1> Home budget </h1></div>
-    <div> <h3> Registration form </h3></div>
     <div class="container">
-
+        <img id = "upperImage" src="{{ asset ('bundles/viktorijavikabudget/images/titleImage.jpg')}}" alt = "It is written 'My Budget'" />
+        <br>
+        <br>
         {{ form_start(form, {"attr": {'class':"form-horizontal", 'novalidate' : 'novalidate' }}) }}
             {{ form_errors(form) }}
 
