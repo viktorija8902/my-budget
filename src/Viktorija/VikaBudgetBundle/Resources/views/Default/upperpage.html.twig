@@ -4,10 +4,10 @@
 
     <div class="row">
         <div class="col-sm-3">
-            <div class="col-sm-9"><h1>Hello, {{ firstname }}!</h1></div>
-            <div class="col-sm-9"><h5><a href="{{ path('logout') }}">Logout</a></h5></div></div>
-
-        <div class="col-sm-9 col-xs-12"><img id = "upperImage" src="{{ asset ('bundles/viktorijavikabudget/images/titleImage.jpg')}}" alt = "This is photo of fish" /> </div>
+            <div class="col-sm-9"><h1><b>Hello, {{ firstname }}!</b></h1></div>
+            <div class="col-sm-9"><h5><a href="{{ path('logout') }}">Logout</a></h5></div>
+        </div>
+        <div class="col-sm-9 col-xs-12"><img id = "upperImage" src="{{ asset ('bundles/viktorijavikabudget/images/titleImage.jpg')}}" alt = "It is written 'My Budget'" /> </div>
     </div>
 
     {%  block meniu %}{% endblock %}
