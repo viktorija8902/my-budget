@@ -28,22 +28,6 @@ class ExpensesStatisticsController extends Controller{
         /** @var $user BudgetUser */
         $user = $this->get('security.token_storage')->getToken()->getUser();
 
-//        $typeOfExpense = $user->getExpenses();
-//        $groupExpenseId = $typeOfExpense->getId();
-//        /** @var EntityRepository $repository */
-//        $repository = $this->getDoctrine()
-//            ->getRepository('Viktorija\VikaBudgetBundle\Entity\InDetail\ExpensesInDetail' );
-//
-//        $query = $repository->createQueryBuilder('p' )
-//            ->select('sum(p.itemPrice)')
-//            ->where('p.weekOfYear = :weekOfYear AND p.expenses = :expenses' )
-//            ->setParameters(array(
-//                'weekOfYear' => $weekOfYear,
-//                'expenses' => $groupExpenseId,
-//            ))
-//            ->getQuery();
-//        $weeklySum = $query->getResult()[0][1];
-//        $weeklySums[$groupExpenseId] = $weeklySum;
 
 
         return $this->render('ViktorijaVikaBudgetBundle:Default:statisticsExpenses.html.twig', array(
