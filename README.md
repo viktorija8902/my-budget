@@ -3,35 +3,39 @@ My Budget
 
 A Symfony project created on June 15, 2015, 1:41 pm.
 
-Čia mano šiuo metu rašoma sistema. Veikia registracija, registracijos formos validacija, vartotojo prisijungimas, 
-slaptažodžio kodavimas, du menu tabai (išlaidos ir pajamos), galima įvesti išlaidas, pajamas pagal atitinkamas 
-kategorijas, jas išsaugoti duomenų bazėje (MySQL). 
-Savaitinės ir mėnesinės išlaidų sumos atvaizduojamos
-naudojant Ajax, sistema pritaikyta skirtingo dydžio ekranams (screenshot apačioje). 
+**My first project** written in June 2015.
 
-Rašau su PHP (Symfony2), naudojau Bootstrap, jQuery, Ajax. Sistema dar nebaigta, kadangi mokytis programuoti 
-pradėjau nuo 2015 m. sausio, baigtų pavyzdžių kol kas neturiu.
+Things that work:
+* registration
+* registration form's validation
+* login
+* password hashing
+* income/expenses: user can view this week's and this month's income/expenses
+* income/expenses: user can log his income and expenses based on categories (Ajax is used to avoid page reloading)
+* responsive design (screenshots below)
 
-Registracijos puslapis:
-------------------
-![Registration page](/ReadmeImages/register.PNG)
+Technologies used: PHP, Symfony2, Bootstrap, jQuery, Ajax, MySQL.
 
-Registracijos puslapis (mobiliajame):
-------------------
-![Registration page mobile](/ReadmeImages/registerMobile.PNG)
-
-Login puslapis:
-------------------
-![Login page](/ReadmeImages/login.PNG)
-
-Login puslapis (mobiliajame):
-------------------
-![Login page mobile](/ReadmeImages/loginMobile.PNG)
-
-Išlaidų puslapis:
+Expenses page:
 ------------------
 ![Expenses page](/ReadmeImages/expenses.PNG)
 
-Pajamų puslapis (mobiliajame):
+Income page (mobile view):
 ------------------
 ![Income page mobile](/ReadmeImages/incomeMobile.PNG)
+
+Registration page:
+------------------
+![Registration page](/ReadmeImages/register.PNG)
+
+Registration page (mobile view):
+------------------
+![Registration page mobile](/ReadmeImages/registerMobile.PNG)
+
+Login page:
+------------------
+![Login page](/ReadmeImages/login.PNG)
+
+Login page: (mobile view):
+------------------
+![Login page mobile](/ReadmeImages/loginMobile.PNG)
