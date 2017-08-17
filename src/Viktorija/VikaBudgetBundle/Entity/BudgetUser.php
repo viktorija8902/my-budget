@@ -265,7 +265,7 @@ class BudgetUser implements AdvancedUserInterface, \Serializable
     }
 
     /**
-    * @Assert\True(message = "The password cannot match your username")
+    * @Assert\IsTrue(message = "The password cannot match your username")
     */
     public function isPasswordLegal()
     {
