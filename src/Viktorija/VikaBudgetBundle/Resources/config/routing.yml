@@ -1,5 +1,5 @@
 registration:
-  path: /register
+  path: /
   defaults: { _controller: ViktorijaVikaBudgetBundle:Registration:registration }
 
 _registration_completed:
