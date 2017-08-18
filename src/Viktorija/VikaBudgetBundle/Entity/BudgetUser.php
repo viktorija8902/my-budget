@@ -40,7 +40,7 @@ class BudgetUser implements AdvancedUserInterface, \Serializable
     *      minMessage = "You must be at least 3 to enter",
     *      maxMessage = "Nice try! Are you really older than the oldest person ever?"
     * )
-    * @ORM\Column(type="integer")
+    * @ORM\Column(type="integer", nullable=true)
     */
     private $age;
 
