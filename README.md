@@ -16,6 +16,34 @@ Things that work:
 
 Technologies used: PHP, Symfony2, Bootstrap, jQuery, Ajax, MySQL.
 
+Screenshots
+------------------
+
+### Expenses page:
+
+![Expenses page](/ReadmeImages/expenses.PNG)
+
+### Income page (mobile view):
+
+![Income page mobile](/ReadmeImages/incomeMobile.PNG)
+
+### Registration page:
+
+![Registration page](/ReadmeImages/register.PNG)
+
+### Registration page (mobile view):
+
+![Registration page mobile](/ReadmeImages/registerMobile.PNG)
+
+### Login page:
+
+![Login page](/ReadmeImages/login.PNG)
+
+### Login page: (mobile view):
+
+![Login page mobile](/ReadmeImages/loginMobile.PNG)
+
+
 ### **Instructions how to run the project (for Ubuntu)**
 
 1. clone the repository
@@ -58,30 +86,3 @@ Technologies used: PHP, Symfony2, Bootstrap, jQuery, Ajax, MySQL.
 Click on the url in the console. Registration window will open. 
 After registration user is redirected to /login page. He can login to his account, log his expenses/income and logout. 
 If user is already registered, he can go directly to /login page.
-
-Screenshots
-------------------
-
-### Expenses page:
-
-![Expenses page](/ReadmeImages/expenses.PNG)
-
-### Income page (mobile view):
-
-![Income page mobile](/ReadmeImages/incomeMobile.PNG)
-
-### Registration page:
-
-![Registration page](/ReadmeImages/register.PNG)
-
-### Registration page (mobile view):
-
-![Registration page mobile](/ReadmeImages/registerMobile.PNG)
-
-### Login page:
-
-![Login page](/ReadmeImages/login.PNG)
-
-### Login page: (mobile view):
-
-![Login page mobile](/ReadmeImages/loginMobile.PNG)
