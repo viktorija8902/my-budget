@@ -1,8 +1,6 @@
 My Budget
 ===============
 
-A Symfony project created on June 15, 2015, 1:41 pm.
-
 **My first project** written in June-July 2015.
 
 Things that work:
